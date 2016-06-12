@@ -2,47 +2,68 @@ window.onload = function() {
     var matches = [];
     var elems = document.getElementsByTagName("*");
 
-    for (var i=0; i<elems.length; i++) {
-        if (elems[i].className.indexOf("ez-") == 0)
-            matches.push(elems[i]);
+    for (var e = 0; e < elems.length; e++) {
+        if (elems[e].className.indexOf("ez-") == 0)
+            matches.push(elems[e]);
     }
 
     var classes = [];
-    for(i = 0; i < matches.length; i++) {
-        classes.push(matches[i].className.split(' '));
+    for(var c = 0; c < matches.length; c++) {
+        classes.push(matches[c].className.split(' '));
+    }
 
-        for (j = 0; j < classes.length; j++) {
-            var pos;
-            for (k = 0; k < classes[j].length; k++) {
-                pos = classes[j][k].indexOf('ez-');
+    for (var j = 0; j < classes.length; j++) {
+        var pos;
 
-                var command;
-                if (pos > -1) {
-                    command = classes[j][k].substr(pos + 3);
-                    command = command.split('-');
+        for (var k = 0; k < classes[j].length; k++) {
+            pos = classes[j][k].indexOf('ez-');
 
-                    // console.log(command.indexOf('_') > -1);
+            var command;
+            if (pos > -1) {
+                command = classes[j][k].substr(pos + 3);
+                command = command.split('-');
 
-                    if (command[0].indexOf('_') > -1) {
-                        command[0] = command[0].split('_');
-                        command[0] = command[0][0] + ucfirst(command[0][1]);
-                    }
+                // console.log(command.indexOf('_') > -1);
 
-                    switch (command.length) {
-                        case 2:
-                            matches[i].style[command[0]] = command[1];
-                            break;
-                        case 3:
-                            command[0] = command[0] + ucfirst(command[1]);
-                            matches[i].style[command[0]] = command[2];
-                            break;
-                        case 4:
-                            command[1] = command[0] + ucfirst(command[1]);
-                            command[2] = command[0] + ucfirst(command[2]);
-                            matches[i].style[command[1]] = command[3];
-                            matches[i].style[command[2]] = command[3];
-                            break;
-                    }
+                if (command[0].indexOf('_') > -1) {
+                    command[0] = command[0].split('_');
+                    command[0] = command[0][0] + ucfirst(command[0][1]);
+                }
+
+                console.log(command.length);
+
+                switch (command.length) {
+                    case 2:
+                        matches[j].style[command[0]] = command[1];
+                        break;
+                    case 3:
+                        command[0] = command[0] + ucfirst(command[1]);
+                        matches[j].style[command[0]] = command[2];
+                        break;
+                    case 4:
+                        command[1] = command[0] + ucfirst(command[1]);
+                        command[2] = command[0] + ucfirst(command[2]);
+                        matches[j].style[command[1]] = command[3];
+                        matches[j].style[command[2]] = command[3];
+                        break;
+                    case 5:
+                        command[1] = command[0] + ucfirst(command[1]);
+                        command[2] = command[0] + ucfirst(command[2]);
+                        command[3] = command[0] + ucfirst(command[3]);
+                        matches[j].style[command[1]] = command[4];
+                        matches[j].style[command[2]] = command[4];
+                        matches[j].style[command[3]] = command[4];
+                        break;
+                    case 6:
+                        command[1] = command[0] + ucfirst(command[1]);
+                        command[2] = command[0] + ucfirst(command[2]);
+                        command[3] = command[0] + ucfirst(command[3]);
+                        command[4] = command[0] + ucfirst(command[4]);
+                        matches[j].style[command[1]] = command[5];
+                        matches[j].style[command[2]] = command[5];
+                        matches[j].style[command[3]] = command[5];
+                        matches[j].style[command[4]] = command[5];
+                        break;
                 }
             }
         }
