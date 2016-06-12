@@ -34,6 +34,15 @@ window.onload = function() {
 
                 switch (command.length) {
                     case 2:
+                        if (command[1].indexOf(':') > -1) {
+                            var options = command[1].split(':');
+
+                            command[1] = '';
+                            for(var o = 0; o < options.length; o++) {
+                                command[1] = command[1] + ' ' + options[o];
+                            }
+                        }
+
                         matches[j].style[command[0]] = command[1];
                         break;
                     case 3:
