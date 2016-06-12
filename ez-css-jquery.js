@@ -44,6 +44,12 @@ jQuery(function() {
                         jQuery(element).css(command[0] + '-' + command[2], command[4]);
                         jQuery(element).css(command[0] + '-' + command[3], command[4]);
                         break;
+                    case 6:
+                        jQuery(element).css(command[0] + '-' + command[1], command[5]);
+                        jQuery(element).css(command[0] + '-' + command[2], command[5]);
+                        jQuery(element).css(command[0] + '-' + command[3], command[5]);
+                        jQuery(element).css(command[0] + '-' + command[4], command[5]);
+                        break;
                 }
             }
         });
