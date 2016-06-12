@@ -19,10 +19,17 @@ jQuery(function() {
                 for (i = 0; i < command.length; i++)
                     command[i] = command[i].replace('_', '-');
 
-                console.log(command);
-
                 switch (command.length) {
                     case 2:
+                        if (command[1].indexOf(':') > -1) {
+                            var options = command[1].split(':');
+
+                            command[1] = '';
+                            for(var o = 0; o < options.length; o++) {
+                                command[1] = command[1] + ' ' + options[o];
+                            }
+                        }
+
                         jQuery(element).css(command[0], command[1]);
                         break;
                     case 3:
@@ -31,6 +38,11 @@ jQuery(function() {
                     case 4:
                         jQuery(element).css(command[0] + '-' + command[1], command[3]);
                         jQuery(element).css(command[0] + '-' + command[2], command[3]);
+                        break;
+                    case 5:
+                        jQuery(element).css(command[0] + '-' + command[1], command[4]);
+                        jQuery(element).css(command[0] + '-' + command[2], command[4]);
+                        jQuery(element).css(command[0] + '-' + command[3], command[4]);
                         break;
                 }
             }
