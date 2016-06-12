@@ -23,19 +23,20 @@ window.onload = function() {
                 command = classes[j][k].substr(pos + 3);
                 command = command.split('-');
 
-                // console.log(command.indexOf('_') > -1);
-
                 if (command[0].indexOf('_') > -1) {
                     command[0] = command[0].split('_');
                     command[0] = command[0][0] + ucfirst(command[0][1]);
                 }
 
-                console.log(command.length);
+                if (command[1].indexOf('_') > -1) {
+                    command[1] = command[1].split('_');
+                    command[1] = command[1][0] + '-' + command[1][1];
+                }
 
                 switch (command.length) {
                     case 2:
-                        if (command[1].indexOf(':') > -1) {
-                            var options = command[1].split(':');
+                        if (command[1].indexOf('|') > -1) {
+                            var options = command[1].split('|');
 
                             command[1] = '';
                             for(var o = 0; o < options.length; o++) {
