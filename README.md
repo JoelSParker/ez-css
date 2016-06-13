@@ -40,3 +40,6 @@ Auto generates to
     Example
 </div>
 ````
+
+### Demo
+A demo is available http://joelsparker.com/ez-css/demo.html
